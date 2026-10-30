@@ -1,0 +1,148 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 96%;
+    --foreground: 215 41% 14%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 41% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 41% 14%;
+    --primary: 215 41% 14%;
+    --primary-foreground: 40 33% 96%;
+    --secondary: 210 17% 95%;
+    --secondary-foreground: 215 41% 14%;
+    --muted: 210 14% 93%;
+    --muted-foreground: 210 8% 45%;
+    --accent: 184 90% 29%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 16% 89%;
+    --input: 210 16% 89%;
+    --ring: 184 90% 29%;
+    --gold: 38 35% 53%;
+    --gold-foreground: 215 41% 14%;
+    --teal: 184 90% 29%;
+    --teal-foreground: 0 0% 100%;
+    --coverage-surface: 202 58% 9%;
+    --coverage-foreground: 200 20% 85%;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 215 41% 8%;
+    --foreground: 40 20% 90%;
+    --card: 215 35% 11%;
+    --card-foreground: 40 20% 90%;
+    --popover: 215 35% 11%;
+    --popover-foreground: 40 20% 90%;
+    --primary: 40 20% 90%;
+    --primary-foreground: 215 41% 8%;
+    --secondary: 215 25% 16%;
+    --secondary-foreground: 40 20% 90%;
+    --muted: 215 25% 18%;
+    --muted-foreground: 210 10% 60%;
+    --accent: 184 70% 36%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 215 20% 22%;
+    --input: 215 20% 22%;
+    --ring: 184 70% 36%;
+    --gold: 38 35% 58%;
+    --gold-foreground: 215 41% 8%;
+    --teal: 184 70% 36%;
+    --teal-foreground: 0 0% 100%;
+    --coverage-surface: 202 58% 6%;
+    --coverage-foreground: 200 20% 85%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  ::selection {
+    background: hsl(var(--teal) / 0.2);
+  }
+}
+
+@layer components {
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+
+  .skeleton-shimmer {
+    background: linear-gradient(
+      90deg,
+      hsl(var(--muted)) 25%,
+      hsl(var(--muted) / 0.5) 50%,
+      hsl(var(--muted)) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+  }
+
+  .backdrop-header {
+    backdrop-filter: saturate(180%) blur(12px);
+    -webkit-backdrop-filter: saturate(180%) blur(12px);
+  }
+
+  .backdrop-control {
+    backdrop-filter: saturate(180%) blur(8px);
+    -webkit-backdrop-filter: saturate(180%) blur(8px);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .safe-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.maplibregl-ctrl-attrib {
+  font-size: 10px;
+  background: hsl(var(--background) / 0.7) !important;
+}
+
+.maplibregl-ctrl-attrib a {
+  color: hsl(var(--foreground)) !important;
+}
+
+.maplibregl-canvas {
+  outline: none;
+}
